@@ -77,3 +77,14 @@ daughter(X):- daughter(Y,X), print(Y), nl, fail.
 wife(X,Y):- woman(X), parent(X,Z), parent(Y,Z).
 %wife(X+)
 wife(X):- wife(Y,X), print(Y), nl, !.
+
+%grand_son(X+, Y+)
+grand_son(X,Y):- parent(Z,X), parent(Y,Z), man(X).
+%grand_sons(X+)
+grand_sons(X):- grand_son(Y,X), print(Y),nl,fail.
+%grand_ma_and_son(X+,Y+)
+grand_ma_and_son(X,Y):- (woman(Y),grand_son(X,Y));(woman(X),grand_son(Y,X)).
+%uncle(X+, Y+)
+uncle(X,Y):- man(X), brother(X,Z), parent(Z,Y).
+%uncle(X+)
+uncles(X):- uncle(Y,X), print(Y), nl, fail.
