@@ -68,3 +68,12 @@ brothers(X):- brother(Y,X), print(Y), nl, fail.
 b_s(X,Y):- parent(Z,X), parent(Z,Y), woman(Z), X \= Y.
 % b_s(X+)
 b_s(X):- b_s(X, Y), print(Y), nl, fail.
+
+%daughter(X+, Y+)
+daughter(X,Y):- woman(X), parent(Y,X).
+%daughter(X+)
+daughter(X):- daughter(Y,X), print(Y), nl, fail.
+%wife(X+, Y+)
+wife(X,Y):- woman(X), parent(X,Z), parent(Y,Z).
+%wife(X+)
+wife(X):- wife(Y,X), print(Y), nl, !.
